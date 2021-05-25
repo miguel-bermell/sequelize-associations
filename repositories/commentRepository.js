@@ -11,7 +11,7 @@ exports.deleteComment = async (id) => {
 };
 
 exports.findAllComments = async () => {
-  return await Comment.findAll({ include: Post });
+  return await Comment.findAll({ include: User });
 };
 
 exports.findCommentById = async (id) => {
