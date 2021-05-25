@@ -16,6 +16,7 @@ const loadModels = () => {
     },
   });
   Comment.belongsTo(User);
+  Comment.belongsTo(Post);
   dbConnection.sync().then(() => console.log("All models loaded"));
 };
 

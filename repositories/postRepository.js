@@ -2,11 +2,11 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 const Comment = require("../models/Comment");
 exports.findAllPosts = async () => {
-  return await User.findAll({
-    include: {
-      model: Post,
-      include: Comment,
-    },
+  return await Post.findAll({
+    include: [
+      { model: User, attributes: ["name"] },
+      { model: Comment, attributes: ["content"] },
+    ],
   });
 };
 

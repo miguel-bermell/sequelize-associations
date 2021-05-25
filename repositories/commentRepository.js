@@ -11,7 +11,12 @@ exports.deleteComment = async (id) => {
 };
 
 exports.findAllComments = async () => {
-  return await Comment.findAll({ include: User });
+  return await Comment.findAll({
+    include: [
+      { model: User, attributes: ["name"] },
+      { model: Post, attributes: ["title"] },
+    ],
+  });
 };
 
 exports.findCommentById = async (id) => {
