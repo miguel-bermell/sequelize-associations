@@ -39,3 +39,8 @@ exports.getAllProfiles = async () => {
 exports.editProfile = async (id, userDetails) => {
   await userRepository.updateUser(id, userDetails);
 };
+
+exports.removeProfile = async (id) => {
+  if (!id) throw new Error("This user has not exist");
+  await userRepository.deleteUser(id);
+};

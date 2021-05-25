@@ -30,4 +30,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await postService.editPost(id, req.body);
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await postService.removePost(id);
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
+
 module.exports = router;

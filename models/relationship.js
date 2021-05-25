@@ -1,6 +1,7 @@
 const dbConnection = require("../config/db");
 const User = require("./User");
 const Post = require("./Post");
+const Comment = require("./Comment");
 
 const loadModels = () => {
   User.hasMany(Post, {
@@ -9,7 +10,12 @@ const loadModels = () => {
     },
   });
   Post.belongsTo(User);
-
+  Post.hasMany(Comment, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+  Comment.belongsTo(User);
   dbConnection.sync().then(() => console.log("All models loaded"));
 };
 
