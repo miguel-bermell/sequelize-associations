@@ -21,7 +21,6 @@ exports.insertPost = async (post) => {
 };
 
 exports.updatePost = async (id, postDetails) => {
-  delete postDetails.id;
   return await Post.update(postDetails, { where: { id } });
 };
 
